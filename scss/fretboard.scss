@@ -1,6 +1,22 @@
+.headline,
+.subheadline,
+.title,
+.f-item
+{
+  padding: 0 1rem;
+  margin: 0 0 1rem;
+  width: 100%;
+}
+.f-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 .fretboard {
   width: 100%;
   background: #1f2f0d;
+  margin: 0 0 1rem;
 }
 .string {
   display: flex;
@@ -119,6 +135,16 @@
  }
 }
 }
+
+.noteNames {
+  display: flex;
+  justify-content: space-around;
+}
+.noteName__btn {
+  min-height: 50px;
+  flex: 1 1 auto;
+}
+
 .interface {
   display: flex;
   justify-content: center;

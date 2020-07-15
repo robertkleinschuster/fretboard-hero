@@ -24,17 +24,98 @@
 </head>
 
 <body>
-  <h1>Fretboard Hero</h1>
+  <h1 class="headline">Fretboard Hero</h1>
 
   <div class="fretboard"></div>
+
+  <div class="noteNames">
+    <button class="noteName__btn">C</button>
+    <button class="noteName__btn">Cis</button>
+    <button class="noteName__btn">D</button>
+    <button class="noteName__btn">Dis</button>
+    <button class="noteName__btn">E</button>
+    <button class="noteName__btn">F</button>
+    <button class="noteName__btn">F#</button>
+    <button class="noteName__btn">G</button>
+    <button class="noteName__btn">G#</button>
+    <button class="noteName__btn">A#</button>
+    <button class="noteName__btn">B</button>
+  </div>
+
   <div class="interface">
     <div class="interface__item">
       Find: <span class="target__note js-targetNote"></span>
     </div>
+
     <div class="interface__item">
       Points: <span class="points">0 </span>
     </div>
   </div>
+
+
+
+  <form class="f-wrap">
+    <h2 class="subheadline">Settings</h2>
+    <section class="f-section">
+      <h3 class="title">Enable/Disable Strings</h3>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string1"/>
+        <label class="f-label" for="string1"> String 1</label>
+      </div>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string2"/>
+        <label class="f-label" for="string2"> String 2</label>
+      </div>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string3"/>
+        <label class="f-label" for="string3"> String 3</label>
+      </div>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string4"/>
+        <label class="f-label" for="string4"> String 4</label>
+      </div>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string5"/>
+        <label class="f-label" for="string5"> String 5</label>
+      </div>
+      <div class="f-item">
+        <input class="f-checkbox" type="checkbox" id="string6"/>
+        <label class="f-label" for="string6"> String 6</label>
+      </div>
+    </section>
+
+    <section class="f-section">
+      <h3 class="title">Gamemode</h3>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="findNotesOnFretboard"/>
+        <label class="f-label" for="findNotesOnFretboard">Find Notes On Fretboard</label>
+      </div>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="nameNoteOnFretboard"/>
+        <label class="f-label" for="nameNoteOnFretboard">Name Notes on Fretboard</label>
+      </div>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="findIntervals"/>
+        <label class="f-label" for="findIntervals">Find Intervals</label>
+      </div>
+    </section>
+
+    <section class="f-section">
+      <h3 class="title">Instrument</h3>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="guitar"/>
+        <label class="f-label" for="guitar">Guitar</label>
+      </div>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="bass"/>
+        <label class="f-label" for="bass">Bass</label>
+      </div>
+      <div class="f-item">
+        <input class="f-radio" type="radio" id="ukulele"/>
+        <label class="f-label" for="ukulele">Ukulele</label>
+      </div>
+    </section>
+  </form>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
