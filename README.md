@@ -1,4 +1,4 @@
-# Fretboaed Hero
+# Fretboard Hero
 
 ## Getting started:
 
