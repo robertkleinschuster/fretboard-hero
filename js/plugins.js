@@ -22,5 +22,5 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-import jquery from "jquery";
-export default (window.$ = window.jQuery = jquery);
+import jquery from "./plugins/jquery";
+import i18next from "./plugins/i18next";
