@@ -25,6 +25,6 @@ jobs:
           username: 'frethero'
           server: '${{ secrets.SERVER_DOMAIN }}'
           ssh_private_key: ${{ secrets.FRETHERO_KEY }}
-          local_path: './dist/*'
+          local_path: 'dist/*'
           remote_path: '/home/frethero/web/fretboard-hero.com/public_html'
           args: '-o ConnectTimeout=5'
