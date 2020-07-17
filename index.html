@@ -24,34 +24,37 @@
 </head>
 
 <body>
-  <h1 class="headline">Fretboard Hero</h1>
 
-  <div class="fretboard"></div>
+<h1 class="headline">Fretboard Hero</h1>
 
-  <div class="noteNames">
-    <button class="noteName__btn">C</button>
-    <button class="noteName__btn">Cis</button>
-    <button class="noteName__btn">D</button>
-    <button class="noteName__btn">Dis</button>
-    <button class="noteName__btn">E</button>
-    <button class="noteName__btn">F</button>
-    <button class="noteName__btn">F#</button>
-    <button class="noteName__btn">G</button>
-    <button class="noteName__btn">G#</button>
-    <button class="noteName__btn">A#</button>
-    <button class="noteName__btn">B</button>
+<div class="fretboard"></div>
+
+<div class="noteNames">
+  <button class="noteName__btn">C</button>
+  <button class="noteName__btn">Cis</button>
+  <button class="noteName__btn">D</button>
+  <button class="noteName__btn">Dis</button>
+  <button class="noteName__btn">E</button>
+  <button class="noteName__btn">F</button>
+  <button class="noteName__btn">F#</button>
+  <button class="noteName__btn">G</button>
+  <button class="noteName__btn">G#</button>
+  <button class="noteName__btn">A#</button>
+  <button class="noteName__btn">B</button>
+</div>
+
+
+<div class="interface">
+  <div class="interface__item">
+    Find: <span class="target__note js-targetNote"></span>
   </div>
 
-  <div class="interface">
-    <div class="interface__item">
-      Find: <span class="target__note js-targetNote"></span>
-    </div>
-
-    <div class="interface__item">
-      Points: <span class="points">0 </span>
-    </div>
+  <div class="interface__item">
+    Points: <span class="points">0 </span>
   </div>
+</div>
 
+  <div id="app"></div>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
