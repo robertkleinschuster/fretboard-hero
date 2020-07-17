@@ -17,7 +17,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm build
+        run: npm run build
       - name: current_dir
         run: ls -la
       - name: deploy file to server
@@ -26,6 +26,6 @@ jobs:
           username: 'frethero'
           server: '${{ secrets.SERVER_DOMAIN }}'
           ssh_private_key: ${{ secrets.FRETHERO_KEY }}
-          local_path: 'dist/*'
+          local_path: './dist/*'
           remote_path: '/home/frethero/web/fretboard-hero.com/public_html'
           args: '-o ConnectTimeout=5'
