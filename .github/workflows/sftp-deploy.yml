@@ -5,8 +5,8 @@ name: SFTP Deploy
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
-  workflow_dispatch:
-
+  push:
+    branches: master
 jobs:
   deploy_job:
     runs-on: ubuntu-latest
