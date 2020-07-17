@@ -6,17 +6,15 @@ on:
 jobs:
   deploy_job:
     runs-on: ubuntu-latest
-    name: build&deploy
+    name: Build & Deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Dependencies
+      - name: Dependencies
         run: npm install
       - name: Build
         run: npm run build
-      - name: current_dir
-        run: ls -la
-      - name: deploy file to server
+      - name: Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'frethero'
