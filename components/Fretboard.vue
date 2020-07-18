@@ -295,6 +295,13 @@
     }
   }
 
+  @media (min-width: 768px) {
+    .noteName {
+      padding: 0.5rem;
+      width: 60px;
+    }
+  }
+
   .noteName {
     position: absolute;
     top: 0;
@@ -303,9 +310,7 @@
     left: 0;
     margin: auto;
     display: flex;
-    width: 60px;
     height: 32px;
-    padding: 0.5rem;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -313,6 +318,7 @@
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6);
     z-index: 1;
   }
+
   .noteName.success {
     background: #7bf33b;
   }
@@ -363,10 +369,13 @@
     flex: 1 1 auto;
   }
 
-  .interface {
-    display: flex;
-    justify-content: center;
+  @media (min-width: 768px) {
+    .interface {
+      display: flex;
+      justify-content: center;
+    }
   }
+
   .interface__item {
     margin: 1rem;
     padding: 1rem;
