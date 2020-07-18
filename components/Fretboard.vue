@@ -189,7 +189,7 @@
 
   .fretboard {
     width: 100%;
-    background: #1f2f0d;
+    background: #1f1f1f;
     margin: 0 0 0rem;
   }
   .string {
@@ -209,7 +209,7 @@
     margin: auto;
     height: 3px;
     width: 100%;
-    background: #fafab3;
+    background: #ffffff;
     pointer-events: none;  //allow clickthrough
   }
   .string {
@@ -248,7 +248,7 @@
     bottom: 0;
     width: 2px;
     height: 100%;
-    background: #b8b8b8;
+    background: #999999;
   }
 
   .fret0 {
@@ -277,11 +277,11 @@
     z-index: 1;
   }
   .noteName.success {
-    background: #92f33b;
+    background: #7bf33b;
   }
 
   .noteName.error {
-    background: #ad4747;
+    background: #aa5f5f;
   }
 
   @mixin fretpoint {
@@ -295,7 +295,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #fff;
+    background: #928160;
   }
   .string3 {
     .fret3,
