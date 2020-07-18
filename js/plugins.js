@@ -22,5 +22,3 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-import jquery from "./plugins/jquery";
-import i18next from "./plugins/i18next";
