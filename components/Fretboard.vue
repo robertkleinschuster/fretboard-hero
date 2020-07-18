@@ -1,14 +1,17 @@
 <template lang="html">
   <div>
     <h1 class="headline">{{ headline }}</h1>
-    <div class="fretboard">
+    <h2 class="subheadline" v-bind:class="[showGameOver ? '' : 'hidden']">{{ gameOver }}</h2>
+    <div class="fretboard" v-bind:class="[showGameOver ? 'hidden' : '']">
       <div class="string" :class="'string' + (stringIndex + 1)" v-for="(string, stringIndex) in string_list" :data-string="stringIndex + 1">
         <div class="fret" :class="'fret' + (fret - 1)" v-for="fret in fret_count + 1" v-on:click="onClickFret" :data-fret="fret - 1" :data-note="getNoteIdByStringAndFret(stringIndex + 1, fret -1)">
           <span class="noteName hidden" :id="(stringIndex + 1) + '_' + (fret -1)">{{ getNoteNameByID(getNoteIdByStringAndFret(stringIndex + 1, fret -1)) }}</span>
         </div>
       </div>
     </div>
-
+    <div class="interface">
+      <button v-bind:class="[showGameOver ? '' : 'hidden']" class="restart__btn"  v-on:click="onRestart">{{restart}}</button>
+    </div>
     <div class="interface">
       <div class="interface__item">
         {{find}} <span id="targetNote" class="target__note" :data-note="noteId">{{ getNoteNameByID(noteId) }}</span>
@@ -18,9 +21,13 @@
       </div>
 
       <div class="interface__item">
-        {{points}} <span id="points" class="points">0 </span>
+        {{pointsLabel}} <span id="points" class="points"> {{ points }} </span>
+      </div>
+      <div class="interface__item">
+        {{errorsLabel}} <span id="errors" class="points"> {{errors}} </span>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -53,6 +60,10 @@
             "find": "Find:",
             "findString": "String:",
             "points": "Points:",
+            "errors": "Errors:",
+            "finalPoints": "Points:",
+            "gameOver": "Game over",
+            "restart": "Restart",
           }
         },
         de: {
@@ -61,6 +72,10 @@
             "find": "Ton:",
             "findString": "Saite:",
             "points": "Punkte:",
+            "errors": "Fehler:",
+            "finalPoints": "Erreichte Punktezahl:",
+            "gameOver": "Game Over",
+            "restart": "Neu starten",
           }
         }
       }
@@ -72,16 +87,33 @@
             headline: i18next.t("headline"),
             find: i18next.t("find"),
             findString: i18next.t("findString"),
-            points: i18next.t("points"),
+            pointsLabel: i18next.t("points"),
+            errorsLabel: i18next.t("errors"),
             string_list: string_list,
             fret_count: fret_count,
             noteId: randomNoteId(),
             stringId: randomStringId(),
-            isActive: false
+            isActive: false,
+            errors: 0,
+            points: 0,
+            showGameOver: false,
+            gameOver: "Game Over",
+            restart: i18next.t("restart"),
           }
         },
       methods: {
-        getNoteIdByStringAndFret: getNoteIdByStringAndFret,
+          onRestart: function() {
+            this.errors = 0;
+            this.points = 0;
+            this.showGameOver = false;
+            for (let i = 0; i < document.getElementsByClassName("noteName").length; i++) {
+              document.getElementsByClassName("noteName").item(i).classList.add("hidden");
+              document.getElementsByClassName("noteName").item(i).classList.remove("success");
+            }
+            this.noteId = randomNoteId();
+            this.stringId = randomStringId();
+          },
+      getNoteIdByStringAndFret: getNoteIdByStringAndFret,
         getNoteNameByID: getNoteNameByID,
         onClickFret: function (ev: Event) {
           let string = ev.currentTarget.parentElement.getAttribute("data-string");
@@ -92,17 +124,22 @@
           }
           let span = document.getElementById(string + "_" + fret);
           span.classList.remove("hidden");
+          this.showGameOver = false;
 
           if (document.getElementById("targetNote").getAttribute("data-note") == ev.currentTarget.getAttribute("data-note")
           && document.getElementById("targetString").getAttribute("data-string") == string
           ) {
-            document.getElementById("points").innerHTML++;
+            this.points++;
             span.classList.add("success");
             this.noteId = randomNoteId();
             this.stringId = randomStringId();
           } else {
             span.classList.add("error");
-
+            this.errors++;
+            if (this.errors > 10) {
+              this.gameOver = i18next.t("gameOver") + " " + i18next.t("finalPoints") + " "  + this.points;
+              this.showGameOver = true;
+            }
           }
         }
       }
@@ -331,6 +368,16 @@
     justify-content: center;
   }
   .interface__item {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.4rem;
+  }
+
+  .restart__btn {
+    color: #fff;
+    background: #003f90;
     margin: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
