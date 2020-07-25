@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <h1 class="headline">{{ headline }}</h1>
+    <h1 class="headline">{{ $t('headline') }}</h1>
     <h2 class="subheadline" v-bind:class="[showGameOver ? '' : 'hidden']">{{ gameOver }}</h2>
     <div class="fretboard" v-bind:class="[showGameOver ? 'hidden' : '']">
       <div class="string" :class="'string' + (stringIndex + 1)" v-for="(string, stringIndex) in string_list" :data-string="stringIndex + 1">
@@ -10,21 +10,21 @@
       </div>
     </div>
     <div class="interface">
-      <button v-bind:class="[showGameOver ? '' : 'hidden']" class="restart__btn"  v-on:click="onRestart">{{restart}}</button>
+      <button v-bind:class="[showGameOver ? '' : 'hidden']" class="restart__btn"  v-on:click="onRestart">{{ $t('restart')}}</button>
     </div>
     <div class="interface">
       <div class="interface__item">
-        {{find}} <span id="targetNote" class="target__note" :data-note="noteId">{{ getNoteNameByID(noteId) }}</span>
+        {{ $t('find')}} <span id="targetNote" class="target__note" :data-note="noteId">{{ getNoteNameByID(noteId) }}</span>
       </div>
       <div class="interface__item">
-        {{findString}} <span id="targetString" class="target__note" :data-string="stringId + 1">{{ string_list[stringId] }}</span>
+        {{$t('findString')}} <span id="targetString" class="target__note" :data-string="stringId + 1">{{ string_list[stringId] }}</span>
       </div>
 
       <div class="interface__item">
-        {{pointsLabel}} <span id="points" class="points"> {{ points }} </span>
+        {{$t('points')}} <span id="points" class="points"> {{ points }} </span>
       </div>
       <div class="interface__item">
-        {{errorsLabel}} <span id="errors" class="points"> {{errors}} </span>
+        {{$t('errors')}} <span id="errors" class="points"> {{errors}} </span>
       </div>
     </div>
 
@@ -32,63 +32,12 @@
 </template>
 
 <script lang="ts">
-    import i18next from "i18next";
-    import LanguageDetector from 'i18next-browser-languagedetector';
+  import i18next from "i18next";
 
-    i18next.use(LanguageDetector).init({
-      detection: {
-        // order and from where user language should be detected
-        order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-
-        // keys or params to lookup language from
-        lookupQuerystring: 'lng',
-        lookupCookie: 'i18next',
-        lookupLocalStorage: 'i18nextLng',
-        lookupFromPathIndex: 0,
-        lookupFromSubdomainIndex: 0,
-
-        // cache user language on
-        caches: ['localStorage', 'cookie'],
-        excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
-      },
-      fallbackLng: "en",
-      debug: false,
-      resources: {
-        en: {
-          translation: {
-            "headline": "Fretboard Hero",
-            "find": "Find:",
-            "findString": "String:",
-            "points": "Points:",
-            "errors": "Errors:",
-            "finalPoints": "Points:",
-            "gameOver": "Game over",
-            "restart": "Restart",
-          }
-        },
-        de: {
-          translation: {
-            "headline": "Fretboard Hero",
-            "find": "Ton:",
-            "findString": "Saite:",
-            "points": "Punkte:",
-            "errors": "Fehler:",
-            "finalPoints": "Erreichte Punktezahl:",
-            "gameOver": "Game Over",
-            "restart": "Neu starten",
-          }
-        }
-      }
-    });
-    export default {
+  export default {
         name: "Fretboard",
         data: function () {
           return {
-            headline: i18next.t("headline"),
-            find: i18next.t("find"),
-            findString: i18next.t("findString"),
-            pointsLabel: i18next.t("points"),
-            errorsLabel: i18next.t("errors"),
             string_list: string_list,
             fret_count: fret_count,
             noteId: randomNoteId(),
@@ -98,7 +47,6 @@
             points: 0,
             showGameOver: false,
             gameOver: "Game Over",
-            restart: i18next.t("restart"),
           }
         },
       methods: {
