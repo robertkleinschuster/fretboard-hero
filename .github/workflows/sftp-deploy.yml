@@ -19,9 +19,9 @@ jobs:
       - name: Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          username: 'frethero'
+          username: 'fretboard-hero_com'
           server: '${{ secrets.SERVER_DOMAIN }}'
           ssh_private_key: ${{ secrets.FRETHERO_KEY }}
           local_path: './dist/*'
-          remote_path: '/home/frethero/web/fretboard-hero.com/public_html'
+          remote_path: '/var/www/vhosts/fretboard-hero.com/httpdocs'
           args: '-o ConnectTimeout=5'
